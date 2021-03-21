@@ -3,7 +3,7 @@ setwd ("C: / lab /")
 # con la funzione setwd spieghiamo a R dove andare a prendere i dati
 # i dati sono all'interno della cartella lab
 # la cartella lab deve essere nell' unità :C
-# install.packeges ("raster")
+# install.packages ("raster")
 library(raster)
 # la funzione library richiama il pacchetto che abbiamo installato su R
 brick ("p224r63_2011_masked.grd")
