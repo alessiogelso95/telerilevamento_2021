@@ -1,5 +1,5 @@
 # Il mio primo codice in R per il telerilevamento
-setwd library (raster)
+library (raster)
 Carico il pacchetto richiesto: sp
 > setwd ("C:/lab/")
 > p224r63_2011 <- brick ("p224r63_2011_masked.grd")
@@ -16,15 +16,6 @@ names      :       B1_sre,       B2_sre,       B3_sre,       B4_sre,       B5_sr
 min values : 0.000000e+00, 0.000000e+00, 0.000000e+00, 1.196277e-02, 4.116526e-03, 2.951000e+02, 0.000000e+00 
 max values :    0.1249041,    0.2563655,    0.2591587,    0.5592193,    0.4894984,  305.2000000,    0.3692634 
 
-> dev.off()
-null device 
-          1 
-> dev.off ()
-Error in dev.off() : 
-  non posso chiudere il dispositivo 1 (dispositivo null)
-> dev.off()
-Error in dev.off() : 
-  non posso chiudere il dispositivo 1 (dispositivo null)
 > plot(p224r63_2011$B1_sre)
 > cl <- colorRampPalette(c("red", "pink", "light blue")) (100)
 > plot (p224r63_2011, col=cl)
@@ -37,7 +28,7 @@ Error in dev.off() :
 library(raster)
 # la funzione library richiama il pacchetto che abbiamo installato su R
 brick ("p224r63_2011_masked.grd")
-# la funzione brick serve a importare tutto il pacchetto dell'immagine satellitare
+# la funzione brick serve a importare tutto il pacchetto dell'immagine satellitare (importare dati dall'esterno)
 p224r63_2011 <- brick ("p224r63_2011_masked.grd")
 # posso associare la funzione brick ad un certo oggetto
 plot (p224r63_2011)
@@ -91,3 +82,26 @@ clr <- colorRampPalette(c("dark red","red","pink")) (100)
 plot(p224r63_2011$B3_sre, col=clr)
 clnir <- colorRampPalette(c("red","orange","yellow")) (100)
 plot(p224r63_2011$B4_sre, col=clnir)
+
+# visualizzare i dati da RGB plotting
+# schema RGB è uno schema fisso che mostra i colori, si possono usare solo 3 bande per volta (R3-G2-B1)
+#plot RGB
+plotRGB(p224r63_2011, r=3, g=2, b=1, stretch="Lin")
+# argomento stretch, prendere i valori delle singole bande e li si tira da ulcune parte per evitare che ci sia uno schiacciamento di un singolo colore che va da 0-1
+# immagine a colori naturali
+# per cambiare i colori, scorrere di uno (r=4,g=3,b=2)
+# a seconda dei processi, vengono fuori altri colori (viola è il suolo nudo). 
+plotRGB(p224r63_2011, r=3, g=2, b=1, stretch="Lin")
+plotRGB(p224r63_2011, r=4, g=3, b=2, stretch="Lin")
+plotRGB(p224r63_2011, r=3, g=4, b=2, stretch="Lin")
+plotRGB(p224r63_2011, r=3, g=2, b=4, stretch="Lin")
+# ci sono altre forme di stretching (es.istogram)
+plotRGB(p224r63_2011, r=3, g=2, b=1, stretch="hist")
+plotRGB(p224r63_2011, r=4, g=3, b=2, stretch="hist")
+plotRGB(p224r63_2011, r=3, g=4, b=2, stretch="hist")
+plotRGB(p224r63_2011, r=3, g=2, b=4, stretch="hist")
+# par natural colours, flase colours, and false colours with histogram stretching
+par(mfrow=c(3,1))
+plotRGB(p224r63_2011, r=3, g=2, b=1, stretch="Lin")
+plotRGB(p224r63_2011, r=3, g=4, b=2, stretch="Lin")
+plotRGB(p224r63_2011, r=3, g=4, b=2, stretch="hist")
