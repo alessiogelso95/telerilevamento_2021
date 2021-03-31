@@ -105,3 +105,25 @@ par(mfrow=c(3,1))
 plotRGB(p224r63_2011, r=3, g=2, b=1, stretch="Lin")
 plotRGB(p224r63_2011, r=3, g=4, b=2, stretch="Lin")
 plotRGB(p224r63_2011, r=3, g=4, b=2, stretch="hist")
+
+#caricare (RStollbox)
+#mutitemporal set
+# p224r63_1988 <- brick ("p224r63_1988_masked.grd")
+plot(p224r63_1988)
+plotRGB(p224r63_1988, r=3, g=2, b=1, stretch="Lin")
+#plottare le immagini a confronto (si vedono passaggi graduali dalla foresta alla coltivazione nel 1988, mentre si vedono nel 2011 uno stacco netto tra foresta e coltivazione, c'è stato molto disboscamento. 
+par(mfrow=c(2,2))
+plotRGB(p224r63_1988, r=4, g=3, b=2, stretch="Lin")
+plotRGB(p224r63_2011, r=4, g=3, b=2, stretch="Lin")
+plotRGB(p224r63_1988, r=4, g=3, b=2, stretch="hist")
+plotRGB(p224r63_2011, r=4, g=3, b=2, stretch="hist")
+#creare un PDF
+pdf("amazzonia.pdf")
+par(mfrow=c(2,2))
+plotRGB(p224r63_1988, r=4, g=3, b=2, stretch="Lin")
+plotRGB(p224r63_2011, r=4, g=3, b=2, stretch="Lin")
+plotRGB(p224r63_1988, r=4, g=3, b=2, stretch="hist")
+plotRGB(p224r63_2011, r=4, g=3, b=2, stretch="hist")
+dev.off()
+#per unire tutti i PDF di una cartella,besh
+pdftk *.pdf  cat output mergedfile.pdf
