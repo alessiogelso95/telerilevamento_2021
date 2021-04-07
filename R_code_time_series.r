@@ -41,3 +41,4 @@ plot (TGr)
 plotRGB(TGr,1,2,3, stretch="Lin") 
 #2005=r/2010=g/2015=b
 plotRGB(TGr,2,3,4, stretch="Lin")
+install.packages("rasterVis")
