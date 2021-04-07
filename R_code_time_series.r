@@ -23,7 +23,7 @@ plot(lst_2015)
 # 3bit 000 (1)/001 (2)/ 010 (3)/ 100 (4)/ 101 (5)/110 (6)/ 111(7)/ 001(8)
 # numero di valori, secondo il n di bit è 2^bit
 #molte immagini sono a 8bit (2^8=256 valori)
-# 2^15=65536 valori (immagini codificate a 16 bit, con valori ripetuti, 
+# 2^16=65536 valori (immagini codificate a 16 bit, con valori ripetuti, diminuiscono la dimensione dell'immagine) 
 # maggiore è il valore di digital mapper e miaggiore è la temperatura
 lapply # applicare una funzione a una certa lista di file
 # crea lista file che r usa 
