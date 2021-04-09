@@ -41,4 +41,23 @@ plot (TGr)
 plotRGB(TGr,1,2,3, stretch="Lin") 
 #2005=r/2010=g/2015=b
 plotRGB(TGr,2,3,4, stretch="Lin")
-install.packages("rasterVis")
+install.packages("rasterVis") #permette di visualizzare i dati raster, 
+
+#levelplot permette di plottare il blocco intero con una sola legenda
+levelplot(TGr)
+install.packages("rgdal")
+levelplot(TGr$lst_2000) # mostra la variabilità della temperatura nella nostr area nel 2000
+cl<-colorRampPalette(c("blue","light blue","pink","red"))(100)
+levelplot(TGr,col.regions=cl)
+levelplot(TGr,col.regions=cl, main="LST variation in time", names.attr=c("July 2000","July 2005", "July 2010", "July 2015"))
+
+#Melt
+meltlist<-list.files(pattern="melt")
+melt_import<-lapply(meltlist,raster)
+MGr<-stack(melt_import)
+levelplot(MGr)
+#matrix algebra, 
+melt_amount<-MGr$X2007annual_melt - MGr$X1997annual_melt 
+clb<-colorRampPalette(c("blue","white","red"))(100)
+plot(melt_amount,col=clb)
+levelplot(melt_amount,col.regions=clb)
