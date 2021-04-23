@@ -19,3 +19,20 @@ library(RStoolbox)
 # per bloccare i punti usare (set.seed) numero di pixel
 soc <- unsuperClass(so, nClasses=3) # due set e una mappa, plotteremo la mappa
 plot(soc$map)
+
+# Grand Cnyon
+# setwd("C:/lab/Grand_canyon")
+
+library(raster)
+library(RStoolbox)
+
+brick("dolansprings_oli_2013088_canyon_lrg.jpg")
+# si associa al brick il nome del file, noi useremo gc
+gc <- brick("dolansprings_oli_2013088_canyon_lrg.jpg")
+# permette di plottare l'immagine 
+plotRGB (gc, 1, 2, 3, stretch="Lin")
+plotRGB (gc, 1, 2, 3, stretch="hist")
+
+# unsuperClass(immagine, campioni, n° di classi)
+gcc <- unsuperClass(gc, nClasses=2) # si possono aumentare i numeri di classi per cambiare i colori
+plot(gcc$map)
