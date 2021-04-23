@@ -36,3 +36,4 @@ plotRGB (gc, 1, 2, 3, stretch="hist")
 # unsuperClass(immagine, campioni, n° di classi)
 gcc <- unsuperClass(gc, nClasses=2) # si possono aumentare i numeri di classi per cambiare i colori
 plot(gcc$map)
+
