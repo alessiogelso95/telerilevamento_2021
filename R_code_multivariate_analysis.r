@@ -12,3 +12,6 @@ logan <- brick("p224r63_2011_masked.grd")
 plot(logan$B1_sre, logan$B2_sre, col="red", pch=19, cex=2) #pch=simboli
 pairs(p224r63_2011) #mette in correlazione le variabili a due a due, le variabili sono le nostre bande(0.93=correlatissime) indice di Chrinson. Quanto queste bande sono molto correlate
 # sistema di sette bande che 
+#(benedettissima analisi multivariata), fare a step perchè immagine è enorme
+# Ricampionamento 
+loganres <- aggregate(logan, fact=10) #immagine con risoluzione 300x300
