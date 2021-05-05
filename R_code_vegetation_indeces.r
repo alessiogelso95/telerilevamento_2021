@@ -85,3 +85,14 @@ plot(vi, col=cl)
 difndvi <- ndvi1 - ndvi2
 cld <- colorRampPalette(c('blue','white','red'))(100) 
 plot(difndvi, col=cld)
+
+library(rasterdiv) #for the worlwide NDVI
+plot(copNDVI) #funzione per cambiare l'immagine, qui vogliao togliere l'acqua
+# Pixels con valori 253,254 e 255 (acqua) possono non essere presi in considerazione
+copNDVI <- reclassify(copNDVI, cbind(253:255,NA)) 
+plot(copNDVI)
+
+#rasterVis package needed:
+levelplot(copNDVI)
+
+
